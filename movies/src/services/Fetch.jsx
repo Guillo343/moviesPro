@@ -9,9 +9,9 @@ export const Fetch = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://api.example.com/movies"); 
+      const response = await fetch("http://www.omdbapi.com/?apikey=62f8dc18"); 
       const jsonData = await response.json();
-      setMovie(jsonData);
+      setMovie(jsonData.Search);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -19,16 +19,6 @@ export const Fetch = () => {
 
   return (
     <div>
-      <h2>Movie List</h2>
-      {movie ? (
-        <ul>
-          {movie.map((movieItem, index) => (
-            <li key={index}>{movieItem.title}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>Loading...</p>
-      )}
     </div>
   );
 };
