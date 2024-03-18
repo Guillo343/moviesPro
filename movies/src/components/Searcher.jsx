@@ -11,7 +11,7 @@ export const Searcher = () => {
 
   return (
     <div>
-      <h1>Search Movies</h1>
+      <h1>Search Movies </h1>
       <input type="text" placeholder='Enter a movie title...'
               value={searchQuery} onChange={handleSearchQuery} />
       <Fetch searchQuery={searchQuery}/>
