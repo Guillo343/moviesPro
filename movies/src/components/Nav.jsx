@@ -4,15 +4,15 @@ import '../../public/Navbar.css'
 export const Nav = () => {
   return (
     <nav className='navbar'>
-        <div className=''>
-            <a href="#" className=''></a>
-            <ul className=''>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Movies</a></li>
-                <li><a href="#">TV Series</a></li>
-                <li><a href="#">Genres</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
+        <div className='nav-div'>
+            <a href="#" className='nav-logo'></a>
+            <ul className='nav-ul'>
+                <li><a href="#" className='nav-li'>Home</a></li>
+                <li><a href="#" className='nav-li'>Movies</a></li>
+                <li><a href="#" className='nav-li'>TV Series</a></li>
+                <li><a href="#" className='nav-li'>Genres</a></li>
+                <li><a href="#" className='nav-li'>About Us</a></li>
+                <li><a href="#" className='nav-li'>Contact Us</a></li>
             </ul>
         </div>
     </nav>
