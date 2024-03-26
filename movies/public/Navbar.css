@@ -1,6 +1,6 @@
 .navbar {
    padding: 10px 20px;
-   background-color: rgb(23, 230, 185);
+   background-color: #39288C;
 }
 .nav-div {
     display: flex;
@@ -13,18 +13,45 @@
     padding: 0;
     display: flex;
 }
+.nav-ul li {
+    cursor: pointer;
+    position: relative;
+    margin: 0 1.4rem;
+    padding: 1.2em 1.6em;
+    transition: all 0.2s;
+    transition-delay: 0.2s ;
+}
+.nav-ul li::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.2s;
+}
+.nav-ul li:hover {
+    background-color: #17E6B9;
+}
+.nav-ul li:hover::before {
+    bottom: 56px;
+    left: 0;
+    background-color: #17E6B9;
+}
 .nav-li{
     margin-right: 20px;
+    color: #fff;
+    text-decoration: none;
 }
 .nav-li a {
     color: white;
     text-decoration: none;
     padding: 5px 10px;
 }
-.nav-li:hover {
-    transition: ease-in-out 0.3s;
-    color: lightcoral;
+.nav-div a {
+    color: #fff;
+    text-decoration: none;
 }
-.nav-li:nth-child(n) {
-    
-}
+
+

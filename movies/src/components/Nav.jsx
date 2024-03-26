@@ -5,7 +5,7 @@ export const Nav = () => {
   return (
     <nav className='navbar'>
         <div className='nav-div'>
-            <a href="#" className='nav-logo'></a>
+            <a href="#" className='nav-logo'>Movies</a>
             <ul className='nav-ul'>
                 <li><a href="#" className='nav-li'>Home</a></li>
                 <li><a href="#" className='nav-li'>Movies</a></li>
