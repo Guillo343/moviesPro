@@ -21,8 +21,6 @@ export const Nav = () => {
                     <li><a href="#" className='nav-li'>Movies</a></li>
                     <li><a href="#" className='nav-li'>TV Series</a></li>
                     <li><a href="#" className='nav-li'>Genres</a></li>
-                    <li><a href="#" className='nav-li'>About Us</a></li>
-                    <li><a href="#" className='nav-li'>Contact Us</a></li>
                 </ul>
             </div>
         </nav>
