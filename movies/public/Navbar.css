@@ -1,13 +1,14 @@
+/* Base styles */
 .navbar {
-   padding: 10px 20px;
-   background-color: #39288C;
+    padding: 10px 20px;
+    background-color: #39288C;
 }
 .nav-div {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.nav-ul{
+.nav-ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -19,9 +20,9 @@
     margin: 0 1.4rem;
     padding: 1.2em 1.6em;
     transition: all 0.2s;
-    transition-delay: 0.2s ;
+    transition-delay: 0.2s;
 }
-.nav-ul li::before{
+.nav-ul li::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -39,7 +40,7 @@
     left: 0;
     background-color: #17E6B9;
 }
-.nav-li{
+.nav-li {
     margin-right: 20px;
     color: #fff;
     text-decoration: none;
@@ -54,4 +55,34 @@
     text-decoration: none;
 }
 
+/* Hamburger styles */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
 
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+    .nav-ul {
+        display: none;
+        flex-direction: column;
+        background-color: #39288C;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+    }
+    .nav-ul li {
+        margin: 0;
+    }
+}
