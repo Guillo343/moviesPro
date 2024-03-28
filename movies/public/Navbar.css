@@ -1,7 +1,7 @@
 /* Base styles */
 .navbar {
     padding: 10px 20px;
-    background-color: #39288C;
+    background-color: #6c63ff;
 }
 .nav-div {
     display: flex;
@@ -76,7 +76,7 @@
     .nav-ul {
         display: none;
         flex-direction: column;
-        background-color: #39288C;
+        background-color: #6c63ff;
         position: absolute;
         top: 100%;
         left: 0;
@@ -86,3 +86,13 @@
         margin: 0;
     }
 }
+.nav-logo {
+    display: flex;
+    align-items: center; /* Align items vertically */
+  }
+  
+  .nav-logo img {
+    width: 50px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some spacing between the logo and other content */
+  }

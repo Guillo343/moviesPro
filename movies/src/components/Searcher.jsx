@@ -20,7 +20,7 @@ export const Searcher = () => {
           setSuggestions([]);
         }
       } catch (error) {
-        console.error("Error fetching suggestions:", error);
+        (<h1>Error</h1>), error;
       }
     };
 

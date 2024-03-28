@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import '../../public/Navbar.css'
+import Logo from '../assets/logo.png'
 
 export const Nav = () => {
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -10,7 +11,7 @@ export const Nav = () => {
   return (
     <nav className='navbar'>
             <div className='nav-div'>
-                <a href="#" className='nav-logo'>Movies</a>
+                <a href="#" className='nav-logo'><img src={Logo} alt="logo" /></a>
                 <div className='nav-toggle' onClick={toggleNav}>
                     <div className='bar'></div>
                     <div className='bar'></div>
