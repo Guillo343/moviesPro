@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Fetch } from "../services/Fetch";
 import "../../public/Searcher.css";
 
 export const Searcher = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [selectedMovie, setSelectedMovie] =  useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchSuggestions = async () => {
@@ -16,11 +16,14 @@ export const Searcher = () => {
         );
         if (response.data.Response === "True") {
           setSuggestions(response.data.Search.map((movie) => movie.Title));
+          setError("");
         } else {
           setSuggestions([]);
+          setError("No suggestions found");
         }
       } catch (error) {
-        (<h1>Error</h1>), error;
+        console.error("Error fetching suggestions:", error);
+        setError("Error fetching suggestions");
       }
     };
 
@@ -28,26 +31,28 @@ export const Searcher = () => {
     if (searchQuery.trim() !== "") {
       fetchSuggestions();
     } else {
-      setSuggestions([]); // Clear suggestions when searchQuery is empty
+      setSuggestions([]);
+      setError(""); // Clear error when searchQuery is empty
     }
   }, [searchQuery]);
+
   const handleSearchQuery = (event) => {
     setSearchQuery(event.target.value);
     setSelectedMovie(null);
   };
-  const handleSuggestionClick = async (suggestion) => {
-    try{
-          const response = await axios.get(
-            `http://www.omdbapi.com/?apikey=62f8dc18&t=${suggestion}`
-          );
-          setSelectedMovie(response.data);
-    }
-    catch (error) { return (
-      <h1>Error Fetching the data</h1>
-    )
 
+  const handleSuggestionClick = async (suggestion) => {
+    try {
+      const response = await axios.get(
+        `http://www.omdbapi.com/?apikey=62f8dc18&t=${suggestion}`
+      );
+      setSelectedMovie(response.data);
+      setError("");
+    } catch (error) {
+      console.error("Error fetching movie details:", error);
+      setError("Error fetching movie details");
     }
-  }
+  };
 
   return (
     <div className="searcher-cont">
@@ -59,6 +64,7 @@ export const Searcher = () => {
         value={searchQuery}
         onChange={handleSearchQuery}
       />
+      {error && <h1>{error}</h1>}
       <ul className="searcher-suggestions">
         {suggestions.map((suggestion, index) => (
           <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
@@ -69,10 +75,13 @@ export const Searcher = () => {
       {selectedMovie && (
         <div className="selected-movie">
           <h2>{selectedMovie.Title}</h2>
-          <p>Year:{selectedMovie.Year}</p>
+          <p>Year: {selectedMovie.Year}</p>
           <p>Genre: {selectedMovie.Genre}</p>
           <p>Plot: {selectedMovie.Plot}</p>
-          <img src={selectedMovie.Poster} alt="poster.img" />
+          <img
+            src={selectedMovie.Poster}
+            alt={selectedMovie.Title + " poster"}
+          />
         </div>
       )}
     </div>
