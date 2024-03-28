@@ -72,6 +72,7 @@ export const Searcher = () => {
           <p>Year:{selectedMovie.Year}</p>
           <p>Genre: {selectedMovie.Genre}</p>
           <p>Plot: {selectedMovie.Plot}</p>
+          <img src={selectedMovie.Poster} alt="poster.img" />
         </div>
       )}
     </div>
