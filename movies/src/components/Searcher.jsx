@@ -35,11 +35,12 @@ export const Searcher = () => {
     setSearchQuery(event.target.value);
     setSelectedMovie(null);
   };
-  const handleSuggestionClick = async (suggestions) => {
+  const handleSuggestionClick = async (suggestion) => {
     try{
           const response = await axios.get(
             `http://www.omdbapi.com/?apikey=62f8dc18&t=${suggestion}`
-          )
+          );
+          setSelectedMovie(response.data);
     }
     catch (error) { return (
       <h1>Error Fetching the data</h1>
@@ -66,11 +67,11 @@ export const Searcher = () => {
         ))}
       </ul>
       {selectedMovie && (
-        <div>
+        <div className="selected-movie">
           <h2>{selectedMovie.Title}</h2>
           <p>Year:{selectedMovie.Year}</p>
           <p>Genre: {selectedMovie.Genre}</p>
-          <p>Plot:{selectedMovie.Plot}</p>
+          <p>Plot: {selectedMovie.Plot}</p>
         </div>
       )}
     </div>
