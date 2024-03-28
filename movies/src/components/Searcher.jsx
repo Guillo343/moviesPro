@@ -6,6 +6,7 @@ import "../../public/Searcher.css";
 export const Searcher = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [selectedMovie, setSelectedMovie] =  useState(null);
 
   useEffect(() => {
     const fetchSuggestions = async () => {
@@ -32,7 +33,20 @@ export const Searcher = () => {
   }, [searchQuery]);
   const handleSearchQuery = (event) => {
     setSearchQuery(event.target.value);
+    setSelectedMovie(null);
   };
+  const handleSuggestionClick = async (suggestions) => {
+    try{
+          const response = await axios.get(
+            `http://www.omdbapi.com/?apikey=62f8dc18&t=${suggestion}`
+          )
+    }
+    catch (error) { return (
+      <h1>Error Fetching the data</h1>
+    )
+
+    }
+  }
 
   return (
     <div className="searcher-cont">
@@ -46,11 +60,19 @@ export const Searcher = () => {
       />
       <ul className="searcher-suggestions">
         {suggestions.map((suggestion, index) => (
-          <li key={index} onClick={() => setSearchQuery(suggestion)}>
+          <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
             {suggestion}
           </li>
         ))}
       </ul>
+      {selectedMovie && (
+        <div>
+          <h2>{selectedMovie.Title}</h2>
+          <p>Year:{selectedMovie.Year}</p>
+          <p>Genre: {selectedMovie.Genre}</p>
+          <p>Plot:{selectedMovie.Plot}</p>
+        </div>
+      )}
     </div>
   );
 };
