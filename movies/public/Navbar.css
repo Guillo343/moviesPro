@@ -14,6 +14,7 @@
     padding: 0;
     display: flex;
 }
+
 .nav-ul li {
     cursor: pointer;
     position: relative;
@@ -34,6 +35,7 @@
 }
 .nav-ul li:hover {
     background-color: #17E6B9;
+    
 }
 .nav-ul li:hover::before {
     bottom: 56px;
@@ -42,16 +44,19 @@
 }
 .nav-li {
     margin-right: 20px;
-    color: #fff;
+    color: #242424;
     text-decoration: none;
+    font: bold;
+    font-size: 17.5px;
 }
+
 .nav-li a {
-    color: white;
+    color: #242424;
     text-decoration: none;
     padding: 5px 10px;
 }
 .nav-div a {
-    color: #fff;
+    color: #242424;
     text-decoration: none;
 }
 
