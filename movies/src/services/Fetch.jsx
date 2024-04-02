@@ -1,35 +1,42 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-export const Fetch = ({ searchQuery }) => {
-  const [movies, setMovies] = useState([]);
+const Fetch = () => {
+  const [movie, setMovie] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchData();
-  }, [searchQuery]);
+    const fetchMovie = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.themoviedb.org/3/movie/11?api_key=2da2f67f1914be6e202b18730738c0b6"
+        );
+        setMovie(response.data);
+      } catch (error) {
+        setError(error);
+      }
+    };
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`http://www.omdbapi.com/?apikey=62f8dc18&s=${searchQuery}`); 
-      const jsonData = await response.json();
-      setMovies(jsonData.Search || []);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+    fetchMovie();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div>
-      <h2>Movie Results </h2>
-      {movies.length > 0 ? (
-        
-      <ul>
-        {movies.map((movieItem) => (
-          <li key={movieItem.imdbID}>{movieItem.Title}</li>
-        ))}
-      </ul>
+      {movie ? (
+        <div>
+          <h1>{movie.title}</h1>
+          <p>{movie.overview}</p>
+          {/* Display other movie information as needed */}
+        </div>
       ) : (
-        <p>No movies found.</p>
+        <div>Loading...</div>
       )}
     </div>
   );
 };
+
+export default Fetch;

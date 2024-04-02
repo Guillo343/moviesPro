@@ -9,32 +9,43 @@ export const Searcher = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchSuggestions = async () => {
+    const authenticate = async () => {
       try {
-        const response = await axios.get(
-          `http://www.omdbapi.com/?apikey=62f8dc18&s=${searchQuery}`
-        );
-        if (response.data.Response === "True") {
-          setSuggestions(response.data.Search.map((movie) => movie.Title));
-          setError("");
-        } else {
-          setSuggestions([]);
-          setError("No suggestions found");
-        }
+        const response = await axios.get('https://api.themoviedb.org/3/authentication', {
+          headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZGEyZjY3ZjE5MTRiZTZlMjAyYjE4NzMwNzM4YzBiNiIsInN1YiI6IjY2MGMyYWJmOWM5N2JkMDE3Y2E1NGE0MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eP7bgvj36E-u0MTu_ovTQAZgUktTCNAi5iaGfbxb2k4'
+          }
+        });
+        console.log(response.data);
+        // Once authenticated, fetch suggestions
+        fetchSuggestions();
       } catch (error) {
-        console.error("Error fetching suggestions:", error);
-        setError("Error fetching suggestions");
+        console.error("Authentication error:", error);
+        setError("Authentication error");
       }
     };
 
-    // Fetch suggestions only if searchQuery is not empty
-    if (searchQuery.trim() !== "") {
-      fetchSuggestions();
-    } else {
-      setSuggestions([]);
-      setError(""); // Clear error when searchQuery is empty
+    authenticate();
+  }, []);
+
+  const fetchSuggestions = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=2da2f67f1914be6e202b18730738c0b6&query=${searchQuery}`
+      );
+      if (response.data.results.length > 0) {
+        setSuggestions(response.data.results.map((movie) => movie.title));
+        setError("");
+      } else {
+        setSuggestions([]);
+        setError("No suggestions found");
+      }
+    } catch (error) {
+      console.error("Error fetching suggestions:", error);
+      setError("Error fetching suggestions");
     }
-  }, [searchQuery]);
+  };
 
   const handleSearchQuery = (event) => {
     setSearchQuery(event.target.value);
@@ -44,7 +55,7 @@ export const Searcher = () => {
   const handleSuggestionClick = async (suggestion) => {
     try {
       const response = await axios.get(
-        `http://www.omdbapi.com/?apikey=62f8dc18&t=${suggestion}`
+        `https://api.themoviedb.org/3/movie/${suggestion.id}?api_key=2da2f67f1914be6e202b18730738c0b6`
       );
       setSelectedMovie(response.data);
       setError("");
@@ -68,19 +79,19 @@ export const Searcher = () => {
       <ul className="searcher-suggestions">
         {suggestions.map((suggestion, index) => (
           <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-            {suggestion}
+            {suggestion.title}
           </li>
         ))}
       </ul>
       {selectedMovie && (
         <div className="selected-movie">
-          <h2>{selectedMovie.Title}</h2>
-          <p>Year: {selectedMovie.Year}</p>
-          <p>Genre: {selectedMovie.Genre}</p>
-          <p>Plot: {selectedMovie.Plot}</p>
+          <h2>{selectedMovie.title}</h2>
+          <p>Year: {selectedMovie.release_date}</p>
+          <p>Genre: {selectedMovie.genre}</p>
+          <p>Plot: {selectedMovie.overview}</p>
           <img
-            src={selectedMovie.Poster}
-            alt={selectedMovie.Title + " poster"}
+            src={`https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`}
+            alt={selectedMovie.title + " poster"}
           />
         </div>
       )}

@@ -2,7 +2,7 @@ import "./App.css";
 import { Nav } from "./components/Nav";
 import { Searcher } from "./components/Searcher";
 import PopularMovies from './components/PopularMovies'
-import { Fetch } from "./services/Fetch";
+// import { Fetch } from "./services/Fetch";
 import {Home} from './pages/Home'
 import {Movies} from './pages/Movies'
 import {Series} from './pages/Series'
@@ -14,7 +14,7 @@ function App() {
       <Router>
         <Nav />
         <Searcher />
-        <PopularMovies />
+        {/* <PopularMovies /> */}
         <Routes>
           <Route path="/Home" index element={<Home />} />
           <Route path="/Movies" element={<Movies />} />

@@ -11,8 +11,8 @@ const PopularMovies = () => {
     const fetchPopularMovies = async () => {
       try {
         const response = await axios.get(
-          "http://www.omdbapi.com/?apikey=62f8dc18&type=movie&s=popular"
-        );
+          "http://www.omdbapi.com/?apikey=62f8dc18&type=movie&y=2024&r=json"
+          );
         if (response.data.Response === "True") {
           setPopularMovies(response.data.Search);
           setError("");
