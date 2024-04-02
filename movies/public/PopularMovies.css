@@ -1,11 +1,16 @@
 .popular-movies-container {
   overflow: hidden;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
 
 .movie-container {
   display: flex;
   transition: transform 1s;
+  justify-content: center;
 }
 
 .movie-poster {
@@ -13,15 +18,24 @@
   height: 300px;
   margin-right: 10px;
   position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .movie-poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s;
 }
 
-.movie-poster:hover::after {
+.movie-poster:hover img {
+  transform: scale(1.05);
+}
+
+.movie-poster::after {
   content: attr(data-title);
   position: absolute;
   bottom: 0;
@@ -49,12 +63,14 @@
   padding: 10px;
   border: none;
   cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 50%;
 }
 
 .prev-button {
-  left: 0;
+  left: 20px;
 }
 
 .next-button {
-  right: 0;
+  right: 20px;
 }

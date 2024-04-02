@@ -14,7 +14,7 @@ function App() {
       <Router>
         <Nav />
         <Searcher />
-        {/* <PopularMovies /> */}
+        <PopularMovies />
         <Routes>
           <Route path="/Home" index element={<Home />} />
           <Route path="/Movies" element={<Movies />} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import '../../public/PopularMovies.css'
+import '../../public/PopularMovies.css';
 
 const PopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -11,15 +11,10 @@ const PopularMovies = () => {
     const fetchPopularMovies = async () => {
       try {
         const response = await axios.get(
-          "http://www.omdbapi.com/?apikey=62f8dc18&type=movie&y=2024&r=json"
-          );
-        if (response.data.Response === "True") {
-          setPopularMovies(response.data.Search);
-          setError("");
-        } else {
-          setPopularMovies([]);
-          setError("No popular movies found");
-        }
+          "https://api.themoviedb.org/3/movie/popular?api_key=2da2f67f1914be6e202b18730738c0b6"
+        );
+        setPopularMovies(response.data.results);
+        setError("");
       } catch (error) {
         console.error("Error fetching popular movies:", error);
         setError("Error fetching popular movies");
@@ -30,10 +25,11 @@ const PopularMovies = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() =>{
-      setScrollIndex(prevIndex =>
-        prevIndex === popularMovies.length -1 ? 0 : prevIndex + 1);
-    },2000);
+    const interval = setInterval(() => {
+      setScrollIndex((prevIndex) =>
+        prevIndex === popularMovies.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [popularMovies]);
@@ -43,6 +39,7 @@ const PopularMovies = () => {
       prevIndex === 0 ? popularMovies.length - 1 : prevIndex - 1
     );
   };
+
   const handleNextClick = () => {
     setScrollIndex((prevIndex) =>
       prevIndex === popularMovies.length - 1 ? 0 : prevIndex + 1
@@ -56,11 +53,14 @@ const PopularMovies = () => {
       <div className="movie-container">
         {popularMovies.map((movie, index) => (
           <div
-            key={movie.imdbID}
+            key={movie.id}
             className="movie-poster"
-            data-title={`${movie.Title} (${movie.Year})`}
+            data-title={`${movie.title} (${movie.release_date.substring(0, 4)})`}
           >
-            <img src={movie.Poster} alt={movie.Title} />
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
           </div>
         ))}
       </div>

@@ -18,7 +18,6 @@ export const Searcher = () => {
           }
         });
         console.log(response.data);
-        // Once authenticated, fetch suggestions
         fetchSuggestions();
       } catch (error) {
         console.error("Authentication error:", error);
@@ -28,7 +27,6 @@ export const Searcher = () => {
 
     authenticate();
   }, []);
-
   const fetchSuggestions = async () => {
     try {
       const response = await axios.get(
