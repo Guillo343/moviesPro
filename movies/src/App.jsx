@@ -1,7 +1,6 @@
 import "./App.css";
 import { Nav } from "./components/Nav";
 import { Searcher } from "./components/Searcher";
-import PopularMovies from './components/PopularMovies'
 import { Footer } from "./components/Footer";
 import {Movies} from './pages/Movies'
 import {Series} from './pages/Series'

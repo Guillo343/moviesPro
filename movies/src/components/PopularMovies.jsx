@@ -7,7 +7,7 @@ const PopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [error, setError] = useState("");
   const [scrollIndex, setScrollIndex] = useState(0);
-  const moviesPerPage = 6; // Number of movies to display per page
+  const moviesPerPage = 6; 
 
   useEffect(() => {
     const fetchPopularMovies = async () => {
