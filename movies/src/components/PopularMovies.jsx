@@ -6,6 +6,7 @@ const PopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [error, setError] = useState("");
   const [scrollIndex, setScrollIndex] = useState(0);
+  const moviesPerPage = 6; // Number of movies to display per page
 
   useEffect(() => {
     const fetchPopularMovies = async () => {
@@ -24,25 +25,15 @@ const PopularMovies = () => {
     fetchPopularMovies();
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScrollIndex((prevIndex) =>
-        prevIndex === popularMovies.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [popularMovies]);
-
   const handlePrevClick = () => {
     setScrollIndex((prevIndex) =>
-      prevIndex === 0 ? popularMovies.length - 1 : prevIndex - 1
+      prevIndex === 0 ? 0 : prevIndex - moviesPerPage
     );
   };
 
   const handleNextClick = () => {
     setScrollIndex((prevIndex) =>
-      prevIndex === popularMovies.length - 1 ? 0 : prevIndex + 1
+      Math.min(prevIndex + moviesPerPage, popularMovies.length - moviesPerPage)
     );
   };
 
@@ -51,25 +42,31 @@ const PopularMovies = () => {
       <h2>Popular Movies</h2>
       {error && <p>{error}</p>}
       <div className="movie-container">
-        {popularMovies.map((movie, index) => (
+        {popularMovies.slice(scrollIndex, scrollIndex + moviesPerPage).map((movie, index) => (
           <div
             key={movie.id}
             className="movie-poster"
             data-title={`${movie.title} (${movie.release_date.substring(0, 4)})`}
+            style={{ transition: "transform 0.5s" }} // Add transition to movie posters
           >
             <img
+              style={{Width: '300px', height: '250px'}}
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
             />
           </div>
         ))}
       </div>
-      <button className="prev-button" onClick={handlePrevClick}>
-        Prev
-      </button>
-      <button className="next-button" onClick={handleNextClick}>
-        Next
-      </button>
+      {scrollIndex > 0 && (
+        <button className="prev-button" onClick={handlePrevClick}>
+          Prev
+        </button>
+      )}
+      {scrollIndex + moviesPerPage < popularMovies.length && (
+        <button className="next-button" onClick={handleNextClick}>
+          Next
+        </button>
+      )}
     </div>
   );
 };
