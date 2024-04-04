@@ -1,4 +1,7 @@
 import React from 'react'
+import { UpcomingMovies } from '../components/UpcomingMovies'
+import {PopularSeries} from '../components/PopularSeries'
+import PopularMovies from '../components/PopularMovies'
 
 export const Movies = () => {
   return (
@@ -7,10 +10,10 @@ export const Movies = () => {
       <PopularMovies />
 
       <h2>Popular Series</h2>
-      <PoopularSeries />
+      <PopularSeries />
 
-      <h2>New Movies</h2>
-      <NewMovies />
+      <h2>Upcoming Movies</h2>
+      <UpcomingMovies />
 
     </div>
   )

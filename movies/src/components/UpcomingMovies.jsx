@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const NewMovies = () => {
+export const UpcomingMovies = () => {
   return (
     <div></div>
   )

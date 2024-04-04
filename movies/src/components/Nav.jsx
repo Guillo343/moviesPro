@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 import '../../public/Navbar.css'
 import Logo from '../assets/logo.png'
 
@@ -18,8 +19,8 @@ export const Nav = () => {
                     <div className='bar'></div>
                 </div>
                 <ul className={isNavOpen ? 'nav-ul open' : 'nav-ul'}>
-                    <li><a href="#" className='nav-li'>Movies</a></li>
-                    <li><a href="#" className='nav-li'>TV Series</a></li>
+                    <li><Link to='/Movies' className='nav-li'>Movies</Link></li>
+                    <li><Link to='/Series'  className='nav-li'>TV Series</Link></li>
                 </ul>
             </div>
         </nav>
