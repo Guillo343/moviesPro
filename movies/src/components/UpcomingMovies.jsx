@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../public/UpcomingMovies.css';
+// import '../../public/UpcomingMovies.css';
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 export const UpcomingMovies = () => {
