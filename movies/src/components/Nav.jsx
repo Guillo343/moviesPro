@@ -18,10 +18,8 @@ export const Nav = () => {
                     <div className='bar'></div>
                 </div>
                 <ul className={isNavOpen ? 'nav-ul open' : 'nav-ul'}>
-                    <li><a href="#" className='nav-li'>Home</a></li>
                     <li><a href="#" className='nav-li'>Movies</a></li>
                     <li><a href="#" className='nav-li'>TV Series</a></li>
-                    <li><a href="#" className='nav-li'>Genres</a></li>
                 </ul>
             </div>
         </nav>
