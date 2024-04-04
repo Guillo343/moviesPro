@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import '../../public/PopularMovies.css';
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const PopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -59,12 +60,12 @@ const PopularMovies = () => {
       </div>
       {scrollIndex > 0 && (
         <button className="prev-button" onClick={handlePrevClick}>
-          Prev
+          <FaArrowLeft />
         </button>
       )}
       {scrollIndex + moviesPerPage < popularMovies.length && (
         <button className="next-button" onClick={handleNextClick}>
-          Next
+          <FaArrowRight />
         </button>
       )}
     </div>

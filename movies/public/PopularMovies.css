@@ -63,38 +63,18 @@
   font-size: 1.2rem;
   border-radius: 50%;
   transition: transform 0.2s ease-in-out; /* Add transition effect */
+  z-index: 1; /* Ensure buttons appear above movie posters */
 }
 
 .prev-button:hover,
 .next-button:hover {
   transform: translateY(-50%) scale(1.1); /* Scale up slightly on hover */
 }
+
 .prev-button {
-  position: absolute;
-  top: 50%;
-  left: 20px; /* Adjust the position */
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  border-radius: 50%;
-  transition: transform 0.2s ease-in-out; /* Add transition effect */
+  left: 10px; /* Adjust the position */
 }
 
 .next-button {
-  position: absolute;
-  top: 50%;
-  right: 20px; /* Adjust the position */
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  border-radius: 50%;
-  transition: transform 0.2s ease-in-out; /* Add transition effect */
+  right: 10px; /* Adjust the position */
 }
