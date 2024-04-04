@@ -7,7 +7,13 @@
   }
   
   .footer a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: underline;
+  }
+  
+  .footer a:hover {
+    color: rgba(155, 184, 228, 0.699);
+    text-decoration: underline;
+    transition: ease 0.25s;
   }
   
