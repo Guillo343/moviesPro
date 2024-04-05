@@ -10,7 +10,6 @@ function App() {
   return (
       <Router>
         <Nav />
-        <Searcher />
         <Routes>
           <Route path="/Movies" index element={<Movies />} />
           <Route path="/Series" element={<Series />} />

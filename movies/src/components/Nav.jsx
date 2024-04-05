@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import '../../public/Navbar.css'
 import Logo from '../assets/logo.png'
+import { Searcher } from './Searcher'
 
 export const Nav = () => {
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -22,6 +23,7 @@ export const Nav = () => {
                     <li><Link to='/Movies' className='nav-li'>Movies</Link></li>
                     <li><Link to='/Series'  className='nav-li'>TV Series</Link></li>
                 </ul>
+                <Searcher />
             </div>
         </nav>
   )
