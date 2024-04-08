@@ -1,47 +1,31 @@
-/* Searcher.css */
+.searcher-inp {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff; /* Add a bottom border for visibility */
+  color: #ffffff; /* Set text color to white */
+  outline: none; /* Remove outline */
+  width: 100%; /* Set width to 100% */
+}
+.searcher-suggestions {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
-.searcher-cont {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .searcher-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .searcher-inp {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 20px;
-  }
-  
-  .searcher-inp:focus {
-    outline: none;
-    border-color: #6c63ff;
-  }
-  
-  .searcher-suggestions {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .searcher-suggestions li {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #f9f9f9;
-    color: #000;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 5px;
-  }
-  
-  .searcher-suggestions li:hover {
-    background-color: #eaeaea;
-  }
-  
+.searcher-suggestions li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.searcher-suggestions li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.searcher-suggestions li img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+ 
