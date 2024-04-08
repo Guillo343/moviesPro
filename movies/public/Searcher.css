@@ -1,10 +1,10 @@
 .searcher-inp {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #ffffff; /* Add a bottom border for visibility */
-  color: #ffffff; /* Set text color to white */
-  outline: none; /* Remove outline */
-  width: 100%; /* Set width to 100% */
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff; 
+  outline: none; 
+  width: 100%; 
 }
 .searcher-suggestions {
   list-style-type: none;
@@ -28,4 +28,3 @@
   height: auto;
   margin-right: 10px;
 }
- 
