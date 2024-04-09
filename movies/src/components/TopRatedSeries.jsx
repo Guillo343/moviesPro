@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../public/PopularMovies.css'; // Make sure to replace 'YourCSSFileName' with the actual name of your CSS file
+import '../../public/PopularMovies.css'
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
-export const PopularSeries = () => {
-  const [popularSeries, setPopularSeries] = useState([]);
+export const TopRatedSeries = () => {
+  const [topRatedSeries, setTopRatedSeries] = useState([]);
   const [error, setError] = useState('');
   const [scrollIndex, setScrollIndex] = useState(0);
   const seriesPerPage = 6;
 
   useEffect(() => {
-    const fetchPopularSeries = async () => {
+    const fetchTopRatedSeries = async () => {
       try {
         const response = await axios.get(
-          'https://api.themoviedb.org/3/tv/popular?api_key=2da2f67f1914be6e202b18730738c0b6'
+          'https://api.themoviedb.org/3/tv/top_rated?api_key=2da2f67f1914be6e202b18730738c0b6&language=en-US&page=1'
         );
-        setPopularSeries(response.data.results);
+        setTopRatedSeries(response.data.results);
         setError('');
       } catch (error) {
-        console.error('Error fetching popular series:', error);
-        setError('Error fetching popular series');
+        console.error('Error fetching top rated series:', error);
+        setError('Error fetching top rated series');
       }
     };
-    fetchPopularSeries();
+    fetchTopRatedSeries();
   }, []);
 
   const handlePrevClick = () => {
@@ -33,16 +33,16 @@ export const PopularSeries = () => {
 
   const handleNextClick = () => {
     setScrollIndex((prevIndex) =>
-      Math.min(prevIndex + seriesPerPage, popularSeries.length - seriesPerPage)
+      Math.min(prevIndex + seriesPerPage, topRatedSeries.length - seriesPerPage)
     );
   };
 
   return (
     <div className="popular-movies-container">
-      <h2>Popular Series</h2>
+      <h2>Top Rated Series</h2>
       {error && <p>{error}</p>}
       <div className="movie-container">
-        {popularSeries.slice(scrollIndex, scrollIndex + seriesPerPage).map((series, index) => (
+        {topRatedSeries.slice(scrollIndex, scrollIndex + seriesPerPage).map((series, index) => (
           <div
             key={series.id}
             className="movie-poster"
@@ -58,13 +58,13 @@ export const PopularSeries = () => {
         ))}
       </div>
       {scrollIndex > 0 && (
-        <button className="prev-arrow" onClick={handlePrevClick}>
-          <FaArrowLeft className="arrow-icon" />
+        <button className="prev-button" onClick={handlePrevClick}>
+          <FaArrowLeft />
         </button>
       )}
-      {scrollIndex + seriesPerPage < popularSeries.length && (
-        <button className="next-arrow" onClick={handleNextClick}>
-          <FaArrowRight className="arrow-icon" />
+      {scrollIndex + seriesPerPage < topRatedSeries.length && (
+        <button className="next-button" onClick={handleNextClick}>
+          <FaArrowRight />
         </button>
       )}
     </div>
