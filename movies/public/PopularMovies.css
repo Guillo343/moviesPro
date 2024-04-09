@@ -57,8 +57,8 @@
   opacity: 1;
 }
 
-.prev-button,
-.next-button {
+.prev-arrow,
+.next-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -73,15 +73,15 @@
   z-index: 1;
 }
 
-.prev-button:hover,
-.next-button:hover {
+.prev-arrow:hover,
+.next-arrow:hover {
   transform: translateY(-50%) scale(1.1);
 }
 
-.prev-button {
+.prev-arrow {
   left: 10px;
 }
 
-.next-button {
+.next-arrow {
   right: 10px;
 }
