@@ -38,14 +38,14 @@ export const PopularSeries = () => {
   };
 
   return (
-    <div className="popular-series-container">
+    <div className="popular-movies-container">
       <h2>Popular Series</h2>
       {error && <p>{error}</p>}
-      <div className="series-container">
+      <div className="movie-container">
         {popularSeries.slice(scrollIndex, scrollIndex + seriesPerPage).map((series, index) => (
           <div
             key={series.id}
-            className="series-poster"
+            className="movie-poster"
             data-title={`${series.name} (${series.first_air_date.substring(0, 4)})`}
             style={{ transition: "transform 0.5s" }}
           >
